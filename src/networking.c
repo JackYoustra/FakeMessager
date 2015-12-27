@@ -1,4 +1,5 @@
 #include "networking.h"
+#include "stdint.h"
 #include <pebble.h>
 
 static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
@@ -39,7 +40,6 @@ void sendPacket(NetworkPacket_t* packet){
   dict_write_uint8(&iter, DURATION_INDEX_KEY, packet->durationIndex);
   
   const uint32_t final_size = dict_write_end(&iter);
-  
   
   app_message_outbox_send();
 }

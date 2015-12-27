@@ -2,8 +2,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define OUTBOX_MAX_SIZE 128
-#define INBOX_MAX_SIZE 128
+#define OUTBOX_MAX_SIZE 124
+#define INBOX_MAX_SIZE 124
 
 // include in .h b/c privacy unnecessary
 // only 3 bytes of size
