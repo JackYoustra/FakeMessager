@@ -11,7 +11,7 @@ static SimpleMenuSection timeSelectSections[NUM_MENU_SECTIONS];
 static SimpleMenuItem timeSelectMenuItems[NUM_FIRST_MENU_ITEMS];
 static NetworkPacket_t* packet;
 
-static void menu_select_callback(int index, void *ctx) {
+static void time_select_callback(int index, void *ctx) {
   // fill the remainder of the network packet
   packet->durationIndex = (uint8_t)index;
   // send packet
@@ -26,26 +26,27 @@ static void menu_select_callback(int index, void *ctx) {
 static void loadTimeWindow(Window *window) {
   timeSelectMenuItems[0] = (SimpleMenuItem) {
     .title = "One second",
-    .callback = menu_select_callback,
+    .callback = time_select_callback,
   };
+  
   timeSelectMenuItems[1] = (SimpleMenuItem) {
     .title = "Fifteen seconds",
-    .callback = menu_select_callback,
+    .callback = time_select_callback,
   };
   
   timeSelectMenuItems[2] = (SimpleMenuItem) {
     .title = "Thirty seconds",
-    .callback = menu_select_callback,
+    .callback = time_select_callback,
   };
   
   timeSelectMenuItems[3] = (SimpleMenuItem) {
     .title = "One minute",
-    .callback = menu_select_callback,
+    .callback = time_select_callback,
   };
   
   timeSelectMenuItems[4] = (SimpleMenuItem) {
     .title = "Five minues",
-    .callback = menu_select_callback,
+    .callback = time_select_callback,
   };
 
   timeSelectSections[0] = (SimpleMenuSection) {

@@ -1,5 +1,6 @@
 #include "pebble.h"
 #include "messenger.h"
+#include "networking.h"
 
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 2
@@ -53,6 +54,7 @@ void main_window_unload(Window *window) {
 }
 
 static void init() {
+  networkInit();
   s_main_window = window_create();
   window_set_window_handlers(s_main_window, (WindowHandlers) {
     .load = main_window_load,

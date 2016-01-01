@@ -9,14 +9,10 @@
     "resources": {
         "media": []
     },
-    "sdkVersion": "3",
+    "sdkVersion": "2",
     "shortName": "FakeMessager",
-    "targetPlatforms": [
-        "aplite",
-        "basalt",
-        "chalk"
-    ],
     "uuid": "58789184-f697-4246-89eb-df9e9680edb9",
+    "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
         "watchface": false

@@ -20,26 +20,15 @@ void networkInit(){
 }
 
 void sendPacket(NetworkPacket_t* packet){
-  DictionaryIterator *iterator;
-  app_message_outbox_begin(&iterator);
+  APP_LOG(APP_LOG_LEVEL_INFO, "Sending packet");
+  DictionaryIterator *iter;
+  app_message_outbox_begin(&iter);
   
-  // write data
-  const uint8_t numOfKeys = 3;
-  const uint32_t size = dict_calc_buffer_size(numOfKeys,
-                                              sizeof(bool),
-                                              sizeof(uint8_t),
-                                              sizeof(uint8_t));
-  uint8_t buffer[size];
-  
-  DictionaryIterator iter; // keeps state of serialization process
-  // Begin:
-  dict_write_begin(&iter, buffer, sizeof(buffer));
   // Write elements
-  dict_write_uint8(&iter, IS_CALL_KEY, packet->isCall); // boolean interpreted as unsigned integer
-  dict_write_uint8(&iter, MESSAGE_INDEX_KEY, packet->messageIndex);
-  dict_write_uint8(&iter, DURATION_INDEX_KEY, packet->durationIndex);
-  
-  const uint32_t final_size = dict_write_end(&iter);
-  
+  dict_write_uint8(iter, IS_CALL_KEY, packet->isCall); // boolean interpreted as unsigned integer
+  dict_write_uint8(iter, MESSAGE_INDEX_KEY, packet->messageIndex);
+  dict_write_uint8(iter, DURATION_INDEX_KEY, packet->durationIndex);
+    
   app_message_outbox_send();
+  APP_LOG(APP_LOG_LEVEL_INFO, "Started packet sending");
 }

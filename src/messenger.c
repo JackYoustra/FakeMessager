@@ -11,7 +11,7 @@ static SimpleMenuLayer *messageSelectMenuLayer;
 static SimpleMenuSection messageSelectSections[NUM_MENU_SECTIONS];
 static SimpleMenuItem messageSelectMenuItems[NUM_FIRST_MENU_ITEMS];
 
-static void menu_select_callback(int index, void *ctx) {
+static void messaging_select_callback(int index, void *ctx) {
   NetworkPacket_t *partialPacket = malloc(sizeof(NetworkPacket_t));
   partialPacket->isCall = 0;
   partialPacket->messageIndex = (uint8_t)index;
@@ -24,16 +24,16 @@ static void menu_select_callback(int index, void *ctx) {
 static void loadMessageWindow(Window *window) {
   messageSelectMenuItems[0] = (SimpleMenuItem) {
     .title = "I need a quick decision on this...",
-    .callback = menu_select_callback,
+    .callback = messaging_select_callback,
   };
   messageSelectMenuItems[1] = (SimpleMenuItem) {
     .title = "Hey baby, what's up?",
-    .callback = menu_select_callback,
+    .callback = messaging_select_callback,
   };
   
   messageSelectMenuItems[2] = (SimpleMenuItem) {
     .title = "Johnny broke his leg! We need you to come pick him up.",
-    .callback = menu_select_callback,
+    .callback = messaging_select_callback,
   };
 
   messageSelectSections[0] = (SimpleMenuSection) {
